@@ -16,10 +16,11 @@ namespace DataAccess.Concrete.InMemory
             _cars = new List<Car>
             {
                 new Car{ Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 200000 , Description = "3.20", ModelYear = "2003"},
-                new Car{ Id = 2, BrandId = 1, ColorId = 1, DailyPrice = 1000000000 , Description = "5.30", ModelYear = "2015"},
+                new Car{ Id = 2, BrandId = 1, ColorId = 1, DailyPrice = 1000000 , Description = "5.30", ModelYear = "2015"},
                 new Car{ Id = 3, BrandId = 2, ColorId = 1, DailyPrice = 250000, Description = "301", ModelYear = "2015"},
                 new Car{ Id = 4, BrandId = 2, ColorId = 1, DailyPrice = 780000, Description = "508", ModelYear = "2019"},
                 new Car{ Id = 5, BrandId = 3, ColorId = 1, DailyPrice = 700000, Description = "polo", ModelYear = "2021"},
+                new Car{ Id = 6, BrandId = 3, ColorId = 1, DailyPrice = 1500000, Description = "golf", ModelYear = "2021"}
             };
         }
         public void Add(Car car)
