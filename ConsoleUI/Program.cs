@@ -11,7 +11,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-           
+            
 
             //Car car1 = new Car { Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 200000, Description = "3.20", ModelYear = "2003" };
             //Car car2 = new Car { Id = 2, BrandId = 1, ColorId = 1, DailyPrice = 1000000, Description = "5.30", ModelYear = "2015" };
@@ -24,6 +24,25 @@ namespace ConsoleUI
             //Car car = new Car() { Id = 7, BrandId = 3, ColorId = 2, DailyPrice = 1000000, Description = "Tiguan", ModelYear = "2020"};
             //carManager.AddCar(car);
 
+            //delete car4 from database
+            //carManager.DeleteCar(car4);
+
+
+            //Car newCar = new Car { BrandId = 2, ColorId = 2, DailyPrice = 1600000, Description = "5008", ModelYear = "2020" };
+            //carManager.AddCar(newCar);
+
+            foreach (var item in carManager.GetAll())
+            {
+                Console.WriteLine(item.Id + " " + item.Description);
+            }
+            Console.WriteLine("------------------------------");
+
+            foreach (var item in carManager.GetAllCarDetail())
+            {
+                Console.WriteLine(item.Id + " / " + item.BrandName + " / " + item.ColorName + " / " + item.Description);
+                
+            }
+            
 
             //foreach (var item in carManager.GetCarsByBrandId(2))
             //{

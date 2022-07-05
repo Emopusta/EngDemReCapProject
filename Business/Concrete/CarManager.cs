@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,9 +32,19 @@ namespace Business.Concrete
             }
         }
 
+        public void DeleteCar(Car car)
+        {
+            _carDal.Delete(car);
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
+        }
+
+        public List<CarDetailDto> GetAllCarDetail()
+        {
+            return _carDal.GetAllCarsDetail();
         }
 
         public List<Car> GetCarsByBrandId(int id)
