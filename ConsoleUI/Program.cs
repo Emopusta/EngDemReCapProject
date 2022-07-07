@@ -11,7 +11,9 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            
+            UserManager userManager = new UserManager(new EfUserDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
             //Car car1 = new Car { Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 200000, Description = "3.20", ModelYear = "2003" };
             //Car car2 = new Car { Id = 2, BrandId = 1, ColorId = 1, DailyPrice = 1000000, Description = "5.30", ModelYear = "2015" };
@@ -24,32 +26,63 @@ namespace ConsoleUI
             //Car car = new Car() { Id = 7, BrandId = 3, ColorId = 2, DailyPrice = 1000000, Description = "Tiguan", ModelYear = "2020"};
             //carManager.AddCar(car);
 
-            //delete car4 from database
-            //carManager.DeleteCar(car4);
+            //User user1 = new User { FirstName = "Emre", LastName = "Duman", Password = "123", Email = "emopusta@asdasd" };
+            //User user2 = new User { FirstName = "Emopusta", LastName = "Dmn", Password = "1234", Email = "asdaasd@asdasd" };
+            //userManager.Add(user1);
+            //userManager.Add(user2); 
+
+            //Customer customer = new Customer { UserId = 1, CompanyName = "PO" };
+            //customerManager.Add(customer);
+
+            //RentalTest(rentalManager);
 
 
-            //Car newCar = new Car { BrandId = 2, ColorId = 2, DailyPrice = 1600000, Description = "5008", ModelYear = "2020" };
-            //carManager.AddCar(newCar);
+            foreach(var item in rentalManager.GetById(1).Data)
+            {
+                Console.WriteLine(item.CarName + " / " + item.UserName + " / " );
+            }
+            //AddNewCarTest(carManager);
 
-            foreach (var item in carManager.GetAll())
+            //ListCarsTest(carManager);
+
+            //ListItemsByBrandIdTest(carManager);
+
+        }
+
+        private static void RentalTest(RentalManager rentalManager)
+        {
+            Rental rental = new Rental() { CarId = 1, CustomerId = 1, Id = 1, RentDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(3) }; ;
+
+            rentalManager.Add(rental);
+        }
+
+        private static void ListItemsByBrandIdTest(CarManager carManager)
+        {
+            foreach (var item in carManager.GetCarsByBrandId(2).Data)
+            {
+                Console.WriteLine(item.Description);
+            }
+        }
+
+        private static void AddNewCarTest(CarManager carManager)
+        {
+            Car newCar = new Car { BrandId = 2, ColorId = 2, DailyPrice = 1600000, Description = "5008", ModelYear = "2020" };
+            carManager.AddCar(newCar);
+        }
+
+        private static void ListCarsTest(CarManager carManager)
+        {
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Id + " " + item.Description);
             }
             Console.WriteLine("------------------------------");
 
-            foreach (var item in carManager.GetAllCarDetail())
+            foreach (var item in carManager.GetAllCarDetail().Data)
             {
                 Console.WriteLine(item.Id + " / " + item.BrandName + " / " + item.ColorName + " / " + item.Description);
-                
+
             }
-            
-
-            //foreach (var item in carManager.GetCarsByBrandId(2))
-            //{
-            //    Console.WriteLine(item.Description);
-            //}
-
-
         }
     }
 }
