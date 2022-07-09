@@ -8,9 +8,9 @@ namespace Core.Utilities.Results
 {
     public interface IResult
     {
-        public static bool Success { get; }
+        bool Success { get; }
 
-        public static string Message { get; }
+        string Message { get; }
 
     }
 }
