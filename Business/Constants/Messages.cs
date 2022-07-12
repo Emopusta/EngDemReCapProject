@@ -13,5 +13,7 @@ namespace Business.Constants
         public static string CarsListed = "Arabalar listelendi. ";
         public static string Error = "Error";
         public static string CarRented = "Araba kiralandi. ";
+        public static string CarsNotListedError = "Arabalar listelenemedi. ";
+        public static string CarCountOfImageError = "Arabaya gereğinden fazla resim eklenmeye çalışıldı";
     }
 }

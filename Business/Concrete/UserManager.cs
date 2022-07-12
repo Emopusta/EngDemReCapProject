@@ -2,6 +2,7 @@
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Business.Concrete
 
         public IResult Add(User user)
         {
+            
             _userDal.Add(user);
             return new SuccessResult();
 
